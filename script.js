@@ -233,6 +233,7 @@ function showMessage(message, icon, title) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+    initDatabase();
     const layoutElements = [...document.querySelectorAll("input"), ...document.querySelectorAll("h3"), document.querySelector(".mdl-layout"), ...document.querySelectorAll(".text"), document.querySelector(".mdl-switch__label"), document.querySelector(".mdl-layout__drawer"), ...document.querySelectorAll(".mdl-layout-title"), ...document.querySelectorAll(".mdl-navigation__link")];
 
     const savedState = localStorage.getItem("darkModeEnabled");
@@ -247,4 +248,24 @@ function activateDarkMode(layoutElements) {
             layoutElement.classList.add("dark-mode");
         }
     });
+}
+
+function initDatabase() {
+    let request = indexedDB.open("MyDatabase", 1);
+
+    request.onerror = function (event) {
+        console.error("Datenbank konnte nicht geöffnet werden: ", event.target.error);
+    };
+
+    request.onsuccess = function (event) {
+        let db = event.target.result;
+    };
+
+    request.onupgradeneeded = function (event) {
+        let db = event.target.result;
+
+        if (!db.objectStoreNames.contains("people")) {
+            db.createObjectStore("people", { keyPath: "name" });
+        }
+    };
 }
