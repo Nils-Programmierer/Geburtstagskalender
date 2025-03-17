@@ -250,8 +250,9 @@ function activateDarkMode(layoutElements) {
     });
 }
 
+
 function initDatabase() {
-    let request = indexedDB.open("MyDatabase", 2);
+    let request = indexedDB.open("MyDatabase", 1);
 
     request.onerror = function (event) {
         console.error("Datenbank konnte nicht geöffnet werden: ", event.target.error);
