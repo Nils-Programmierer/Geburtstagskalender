@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geburtstagskalender | Einstellungen</title>
+    <link rel="icon" href="img/icon512_rounded.png" type="image/x-icon">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script defer src="script3.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <span class="mdl-layout-title cursor-pointer" onclick='window.location.href = "index.html"'>Geburtstagskalender</span>
+                <div class="mdl-layout-spacer"></div>
+                <nav class="mdl-navigation mdl-layout--large-screen-only">
+                    <a class="mdl-navigation__link" href="index.html">Aktuell</a>
+                    <a class="mdl-navigation__link" href="manage.html">Verwalten</a>
+                    <a class="mdl-navigation__link" href="setting.html">Einstellungen</a>
+                </nav>
+            </div>
+        </header>
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">Geburtstagskalender</span>
+            <nav class="mdl-navigation">
+                <a class="mdl-navigation__link" href="index.html">Aktuell</a>
+                <a class="mdl-navigation__link" href="manage.html">Verwalten</a>
+                <a class="mdl-navigation__link" href="setting.html">Einstellungen</a>
+            </nav>
+        </div>
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <h3>Einstellungen:</h3>
+
+
+                <div class="text Align-Middle">
+                    <div class="switch-container">
+                        <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-1">
+                            <input type="checkbox" id="switch-1" class="mdl-switch__input">
+                            <span class="mdl-switch__label">Dunkelmodus</span>
+                        </label>
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="text small">
+                    Datenschutz: Alle deine Daten werden nur lokal auf deinem Gerät gespeichert und nicht an Dritte
+                    weitergegeben. Du kannst alle deine Daten jederzeit löschen.
+                </div>
+
+                <hr>
+
+                <div class="text">
+                    Diese Website gibt es auch als App: <a id="install" class="Link" style="cursor: pointer;">App
+                        installieren</a>.
+                </div>
+
+                <hr>
+
+                <div class="text">Alle Daten löschen?</div>
+                <br>
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+                    onclick="DeleteAll();">
+                    Löschen
+                </button>
+
+                <hr>
+
+                <div class="text">
+                    Entwickler dieser Applikation: <a href="https://github.com/Nils-Programmierer" target="_blank"
+                        class="Link">Nils-Programmierer</a>.
+                </div>
+
+                <hr>
+
+                <div class="text">
+                    Quellcode auf GitHub: <a href="https://github.com/Nils-Programmierer/Geburtstagskalender"
+                        target="_blank" class="Link">Code</a> ansehen.
+                </div>
+
+                <hr>
+
+                <div class="text">
+                    Aktuelle Version: 1.0.0
+                </div>
+
+                <hr>
+
+                <br>
+                <br>
+                <br>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>
