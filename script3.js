@@ -20,6 +20,7 @@ document.getElementById("install").addEventListener("click", async () => {
 
 
 document.addEventListener("DOMContentLoaded", () => {
+    initDatabase();
     const layoutElements = [...document.querySelectorAll("h3"), document.querySelector(".mdl-layout"), ...document.querySelectorAll(".text"), document.querySelector(".mdl-switch__label"), document.querySelector(".mdl-layout__drawer"), ...document.querySelectorAll(".mdl-layout-title"), ...document.querySelectorAll(".mdl-navigation__link")];
     const switchElement = document.getElementById("switch-1");
 
@@ -106,4 +107,24 @@ async function showQuestion(title, text) {
         cancelButtonText: "Nein"
     });
     return result.isConfirmed;
+}
+
+function initDatabase() {
+    let request = indexedDB.open("MyDatabase", 1);
+
+    request.onerror = function (event) {
+        console.error("Datenbank konnte nicht geöffnet werden: ", event.target.error);
+    };
+
+    request.onsuccess = function (event) {
+        let db = event.target.result;
+    };
+
+    request.onupgradeneeded = function (event) {
+        let db = event.target.result;
+
+        if (!db.objectStoreNames.contains("people")) {
+            db.createObjectStore("people", { keyPath: "name" });
+        }
+    };
 }
