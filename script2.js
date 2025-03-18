@@ -147,9 +147,15 @@ async function EditPerson() {
                     pictureType: picture ? picture.type : null
                 };
 
-                updatePerson(KeyDB, newValues)
-                    .then(window.location.href = "open.html?" + name)
-                    .catch(console.error);
+                try {
+                    await updatePerson(KeyDB, newValues);
+                    setTimeout(() => {
+                        window.location.href = "open.html?" + name;
+                    }, 100);
+                } catch (error) {
+                    console.error(error);
+                    showMessage("Fehler beim Aktualisieren der Daten", "error", "Speicherfehler");
+                }
             } else {
                 showMessage("Ungültige Daten. Bitte überprüfe deine Eingaben.", "error", "fehlerhafte Eingaben");
             }
