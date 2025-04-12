@@ -1,24 +1,3 @@
-let deferredPrompt;
-
-window.addEventListener("beforeinstallprompt", (event) => {
-    event.preventDefault();
-    deferredPrompt = event;
-});
-
-
-document.getElementById("install").addEventListener("click", async () => {
-    if (deferredPrompt) {
-        deferredPrompt.prompt();
-
-        let choiceResult = await deferredPrompt.userChoice;
-        if (choiceResult.outcome === "accepted") {
-            showMessage("App wurde erfolgreich installiert!", "success", "Erfolgreich");
-        }
-        deferredPrompt = null;
-    }
-});
-
-
 document.addEventListener("DOMContentLoaded", () => {
     initDatabase();
     const layoutElements = [...document.querySelectorAll("h3"), document.querySelector(".mdl-layout"), ...document.querySelectorAll(".text"), document.querySelector(".mdl-switch__label"), document.querySelector(".mdl-layout__drawer"), ...document.querySelectorAll(".mdl-layout-title"), ...document.querySelectorAll(".mdl-navigation__link")];
